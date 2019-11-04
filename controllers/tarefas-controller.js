@@ -17,3 +17,14 @@ exports.postTarefa = (req, res, next) => {
     tarefas.push(novaTarefa);
     res.status(201).json(novaTarefa);
 };
+
+exports.getTarefa = (req, res, next) => {
+    const idTarefa = req.params.idTarefa;
+
+    for (let tarefa of tarefas) {
+        if (tarefa.id == idTarefa) 
+            return res.status(201).json(tarefa);
+    }
+    return res.status(404).json({});
+
+};
