@@ -21,8 +21,9 @@ exports.postTarefa = (req, res, next) => {
 exports.getTarefa = (req, res, next) => {
     const idTarefa = req.params.idTarefa;
     let tarefa = tarefas.find(o => o.id == idTarefa);
-    if (tarefa) 
-        return res.status(201).json(tarefa);
+    if (tarefa) { return res.status(201).json(tarefa) };
     return res.status(404).json({})
-
 };
+
+exports.putTarefa = (req, res, next) => {};
+exports.deleteTarefa = (req, res, next) => {};
