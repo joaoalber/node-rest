@@ -25,10 +25,15 @@ exports.getTarefa = (req, res, next) => {
     return res.status(404).json({})
 };
 
-exports.putTarefa = (req, res, next) => {};
+exports.putTarefa = (req, res, next) => {
+    const idTarefa = req.params.idTarefa;
+    const update = tarefas.findIndex(t => t.id == idTarefa);
+    tarefas[update] = req.body
+    res.json(tarefas[update])
+};
 
 exports.deleteTarefa = (req, res, next) => {
-    const idTarefa = req.params.idTarefa
+    const idTarefa = req.params.idTarefa;
     const removeByPosition = tarefas.findIndex(t => t.id == idTarefa)
     tarefas.splice(removeByPosition, 1);
     res.json(tarefas);
