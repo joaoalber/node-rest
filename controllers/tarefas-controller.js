@@ -20,11 +20,9 @@ exports.postTarefa = (req, res, next) => {
 
 exports.getTarefa = (req, res, next) => {
     const idTarefa = req.params.idTarefa;
-
-    for (let tarefa of tarefas) {
-        if (tarefa.id == idTarefa) 
-            return res.status(201).json(tarefa);
-    }
-    return res.status(404).json({});
+    let tarefa = tarefas.find(o => o.id == idTarefa);
+    if (tarefa) 
+        return res.status(201).json(tarefa);
+    return res.status(404).json({})
 
 };
