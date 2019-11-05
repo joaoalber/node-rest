@@ -26,4 +26,10 @@ exports.getTarefa = (req, res, next) => {
 };
 
 exports.putTarefa = (req, res, next) => {};
-exports.deleteTarefa = (req, res, next) => {};
+
+exports.deleteTarefa = (req, res, next) => {
+    const idTarefa = req.params.idTarefa
+    const removeByPosition = tarefas.findIndex(t => t.id == idTarefa)
+    tarefas.splice(removeByPosition, 1);
+    res.json(tarefas);
+};
