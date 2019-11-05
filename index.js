@@ -11,6 +11,13 @@ const tarefasRouter = require('./routes/tarefas-router');
 
 const app = express();
 
+app.use((req, res, next) => {
+    res.setHeader('Acccess-Controll-Allow-Origin', '*');
+    res.setHeader('Acccess-Controll-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.setHeader('Acccess-Controll-Allow-Headers', '#');
+    next();
+});
+
 app.use(bodyParser.json());
 app.use('/tarefas', tarefasRouter);
 
